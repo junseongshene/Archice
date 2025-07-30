@@ -34,6 +34,42 @@ body{
 
 }
 
+.landingheader{
+    transition: opacity 0.65s ease-out;
+    max-width: 15vw;
+    z-index: 10000;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 655px;
+    height: 924px;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 1); /* 투명도 조절 */
+    z-index: 9999;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: opacity 3.7s ease-out;
+}
+
+.landingheader.fade-out {
+    opacity: 0;
+}
+
+.overlay.fade-out {
+    opacity: 0;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
 .texture{
     /* 배경 이미지 */
     background-size: cover;
