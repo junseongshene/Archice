@@ -250,6 +250,22 @@ body{
   opacity: 1;
 }
 
+
+.horizontalarrow{
+    position: absolute;
+    top: 200px;
+    left: -500px;
+    width: 653px;
+    z-index: 1000;
+}
+
+.verticalarrow{
+    position: absolute;
+    top: -700px;
+    left: -487px;
+    height: 925px;
+    z-index: 1000;
+}
 /* .two{
     width: 125px;
     position: absolute;
