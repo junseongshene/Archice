@@ -1,0 +1,529 @@
+html{
+    background-color: black;
+}
+
+body{
+    /* 대지 크기 */
+    width: 653px;
+    height: 924px;
+
+    /* 배경색 */
+    background-color: whitesmoke; 
+
+    /* 대지 가운데 정렬 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* 여백 초기화 */
+    margin: 0;
+    padding: 0;
+}
+
+@font-face { /* 폰트 적용 */
+
+  font-family: "AppleGaramond";
+  src: url("./styles/AppleGaramond-Light.ttf") format("truetype");
+  font-weight: normal;
+}
+
+* {
+
+  font-family: 'AppleGaramond', serif;
+
+}
+
+.texture{
+    /* 배경 이미지 */
+    background-size: cover;
+    background-position: center;
+
+    /* 대지 크기 */
+    width: 653px;
+    height: 924px;
+
+    /* 이미지 가운데 정렬 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.25;
+
+}
+
+.layout{
+    /* 대지 크기 */
+    width: 653px;
+    height: 924px;
+
+    /* 배경 이미지 */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+
+    /* 이미지 가운데 정렬 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.headerimage{
+
+    position: absolute;
+    width: 128px;
+    right: 28px;
+    top: 28px;
+    z-index: 1000;
+}
+
+.assets{
+    /* 자산 크기 */
+    width: 653px;
+    height: 924px;
+}
+
+/* .one{
+    width: 160px;
+    position: absolute;
+    top: 37px;
+    left: 85px;
+    z-index: 1000;
+}
+
+.onediv {
+  position: relative; 
+  width: 160px;  
+  height: auto;
+  z-index: 2000;
+}
+
+.one:hover{
+    transform: scale(1.3);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+}
+
+ .onediv::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: 0.35s ease-in-out;
+  pointer-events: none;
+}
+
+.onediv:hover::after {
+  opacity: 1;
+  z-index: 2000;
+} */
+
+.onediv {
+  position: absolute;
+  top: 37px;
+  left: 85px;
+  width: 160px;
+  height: auto;
+  z-index: 1000;
+}
+
+.one {
+  width: 100%;
+  display: block;
+  transition: all 0.35s ease-in-out;
+  position: relative; /* 중요! absolute 절대 ❌ */
+  z-index: 1;
+}
+
+.onediv:hover .one {
+  transform: scale(1.3);
+  cursor: pointer;
+  filter: brightness(0.6);
+}
+
+.overlaytextone {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  
+  color: whitesmoke;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.onediv:hover .overlaytextone {
+  opacity: 1;
+  z-index: 2000;
+}
+
+/* 공통 onediv 스타일 */
+.twodiv, .threediv, .fourdiv, .fivediv, .sixdiv, .sevendiv,
+.eightdiv, .ninediv, .tendiv, .elevendiv, .twelvediv, .thirteendiv,
+.fourteendiv, .fifteendiv, .sixteendiv, .seventeendiv, .eighteendiv {
+  position: absolute;
+  cursor: pointer;
+  /* top, left, width는 인라인 style에서 지정 */
+}
+
+/* 공통 이미지 스타일 */
+.two, .three, .four, .five, .six, .seven, .eight, .nine, .ten,
+.eleven, .twelve, .thirteen, .fourteen, .fifteen, .sixteen, .seventeen, .eighteen {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: all 0.35s ease-in-out;
+}
+
+/* 이미지 호버 효과 */
+.twodiv:hover .two,
+.threediv:hover .three,
+.fourdiv:hover .four,
+.fivediv:hover .five,
+.sixdiv:hover .six,
+.sevendiv:hover .seven,
+.eightdiv:hover .eight,
+.ninediv:hover .nine,
+.tendiv:hover .ten,
+.elevendiv:hover .eleven,
+.twelvediv:hover .twelve,
+.thirteendiv:hover .thirteen,
+.fourteendiv:hover .fourteen,
+.fifteendiv:hover .fifteen,
+.sixteendiv:hover .sixteen,
+.seventeendiv:hover .seventeen,
+.eighteendiv:hover .eighteen {
+  transform: scale(1.3);
+  filter: brightness(0.4);
+  cursor: pointer;
+  z-index: 1500;
+}
+
+/* 공통 오버레이 텍스트 스타일 */
+.overlaytexttwo, .overlaytextthree, .overlaytextfour, .overlaytextfive, 
+.overlaytextsix, .overlaytextseven, .overlaytexteight, .overlaytextnine, 
+.overlaytextten, .overlaytexteleven, .overlaytexttwelve, .overlaytextthirteen,
+.overlaytextfourteen, .overlaytextfifteen, .overlaytextsixteen, .overlaytextseventeen,
+.overlaytexteighteen {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: whitesmoke;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 2000;
+}
+
+/* 오버레이 텍스트 호버 시 보이게 */
+.twodiv:hover .overlaytexttwo,
+.threediv:hover .overlaytextthree,
+.fourdiv:hover .overlaytextfour,
+.fivediv:hover .overlaytextfive,
+.sixdiv:hover .overlaytextsix,
+.sevendiv:hover .overlaytextseven,
+.eightdiv:hover .overlaytexteight,
+.ninediv:hover .overlaytextnine,
+.tendiv:hover .overlaytextten,
+.elevendiv:hover .overlaytexteleven,
+.twelvediv:hover .overlaytexttwelve,
+.thirteendiv:hover .overlaytextthirteen,
+.fourteendiv:hover .overlaytextfourteen,
+.fifteendiv:hover .overlaytextfifteen,
+.sixteendiv:hover .overlaytextsixteen,
+.seventeendiv:hover .overlaytextseventeen,
+.eighteendiv:hover .overlaytexteighteen {
+  opacity: 1;
+}
+
+/* .two{
+    width: 125px;
+    position: absolute;
+    top: 187px;
+    left: 59px;
+} 
+
+.two:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1487;
+}
+
+.overlaytexttwo {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: whitesmoke;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  white-space: nowrap; /* 텍스트 줄바꿈 방지 
+}
+
+.twodiv:hover .overlaytexttwo {
+  opacity: 1;
+  z-index: 2000;
+}
+
+.three{
+    width: 170px;
+    position: absolute;
+    top: 350px;
+    left: 60px;
+}
+
+.three:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1488;
+}
+
+.four{
+    width: 170px;
+    position: absolute;
+    top: 513px;
+    left: 50px;
+   
+}
+
+.four:hover{
+    transform: scale(1.3);
+    filter: brightness(0.5);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1489;
+}
+
+.five{
+    width: 140px;
+    position: absolute;
+    top: 20px;
+    left: 315px;
+}
+
+.five:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1490;
+}
+
+.six{
+    width: 114px;
+    position: absolute;
+    left: 368px;
+    top: 202px;
+}
+
+.six:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1491;
+}
+
+.seven{
+    width: 125px;
+    position: absolute;
+    left: 378px;
+    top: 367px;
+    z-index: 500;
+}
+
+.seven:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1492;
+}
+
+.eight{
+    width: 160px;
+    position: absolute;
+    top: 575px;
+    left: 312px;
+}
+
+.eight:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1493;
+}
+
+.nine{
+    width: 150px;
+    position: absolute;
+    top: 172px;
+    left: 200px;
+}
+
+.nine:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1494;
+}
+
+.ten{
+    width: 115px;
+    position: absolute;
+    top: 338px;
+    left: 240px;
+}
+
+.ten:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1495;
+}
+
+.eleven{
+    width: 150px;
+    position: absolute;
+    top: 440px;
+    left: 227px;
+    z-index: 100;
+}
+
+.eleven:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1496;
+}
+
+.twelve{
+    width: 150px;
+    position: absolute;
+    top: 630px;
+    left: 160px;
+}
+
+.twelve:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1497;
+}
+
+.thirteen{
+    width: 120px;
+    position: absolute;
+    top: 745px;
+    left: 340px;
+}
+
+.thirteen:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1498;
+}
+
+.fourteen{
+    width: 200px;
+    position: absolute;
+    top: 85px;
+    left: 465px;
+}
+
+.fourteen:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1499;
+}
+
+.fifteen{
+    width: 114px;
+    position: absolute;
+    top: 283px;
+    left: 493px;
+}
+
+.fifteen:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1500;
+}
+
+.sixteen{
+    width: 75px;
+    position: absolute;
+    top: 591px;
+    left: 485px;
+}
+
+.sixteen:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1501;
+}
+
+.seventeen{
+    width: 110px;
+    position: absolute;
+    top: 440px;
+    left: 520px;
+}
+
+.seventeen:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1502;
+}
+
+.eighteen{
+    width: 115px;
+    position: absolute;
+    top: 700px;
+    left: 500px;
+}
+
+.eighteen:hover{
+    transform: scale(1.3);
+    filter: brightness(0.4);
+    transition: all 0.35s ease-in-out;
+    cursor: pointer;
+    z-index: 1503;
+} */

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Archice</title>
+</head>
+
+<body>
+    <img class="texture" src="./layouts/096.jpg">
+    <img class="layout" src="./layouts/5862b3da-269e-4d81-ae96-d252f651a6b3.jpg">
+    <div class="title">
+        <img class="headerimage" src="./assets/header.png">
+    </div>
+    <div class="assets">
+        <div class="onediv"><img class="one" src="./assets/1-1.png">
+        <div class="overlaytextone">Pixel Snow</div></div>
+
+        <div class="twodiv" style="position:absolute; top:187px; left:59px; width:125px;">
+  <img class="two" src="./assets/1-2.png" alt="2" />
+  <div class="overlaytexttwo">text2</div>
+</div>
+
+<div class="threediv" style="position:absolute; top:350px; left:60px; width:170px;">
+  <img class="three" src="./assets/1-3.png" alt="3" />
+  <div class="overlaytextthree">Snow Flake</div>
+</div>
+
+<div class="fourdiv" style="position:absolute; top:513px; left:50px; width:170px;">
+  <img class="four" src="./assets/1-4.png" alt="4" />
+  <div class="overlaytextfour">Exploding Ice</div>
+</div>
+
+<div class="fivediv" style="position:absolute; top:20px; left:315px; width:140px;">
+  <img class="five" src="./assets/2-1.png" alt="5" />
+  <div class="overlaytextfive">text5</div>
+</div>
+
+<div class="sixdiv" style="position:absolute; top:202px; left:368px; width:114px;">
+  <img class="six" src="./assets/2-2.png" alt="6" />
+  <div class="overlaytextsix">text6</div>
+</div>
+
+<div class="sevendiv" style="position:absolute; top:367px; left:378px; width:125px; z-index:500;">
+  <img class="seven" src="./assets/2-3.png" alt="7" />
+  <div class="overlaytextseven">text7</div>
+</div>
+
+<div class="eightdiv" style="position:absolute; top:575px; left:312px; width:160px;">
+  <img class="eight" src="./assets/2-4.png" alt="8" />
+  <div class="overlaytexteight">text8</div>
+</div>
+
+<div class="ninediv" style="position:absolute; top:172px; left:200px; width:150px;">
+  <img class="nine" src="./assets/3-1.png" alt="9" />
+  <div class="overlaytextnine">text9</div>
+</div>
+
+<div class="tendiv" style="position:absolute; top:338px; left:240px; width:115px;">
+  <img class="ten" src="./assets/3-2.png" alt="10" />
+  <div class="overlaytextten">text10</div>
+</div>
+
+<div class="elevendiv" style="position:absolute; top:440px; left:227px; width:150px; z-index:100;">
+  <img class="eleven" src="./assets/3-3.png" alt="11" />
+  <div class="overlaytexteleven">text11</div>
+</div>
+
+<div class="twelvediv" style="position:absolute; top:630px; left:160px; width:150px;">
+  <img class="twelve" src="./assets/3-4.png" alt="12" />
+  <div class="overlaytexttwelve">text12</div>
+</div>
+
+<div class="thirteendiv" style="position:absolute; top:745px; left:340px; width:120px;">
+  <img class="thirteen" src="./assets/4-1.png" alt="13" />
+  <div class="overlaytextthirteen">text13</div>
+</div>
+
+<div class="fourteendiv" style="position:absolute; top:85px; left:465px; width:200px;">
+  <img class="fourteen" src="./assets/4-2.png" alt="14" />
+  <div class="overlaytextfourteen">text14</div>
+</div>
+
+<div class="fifteendiv" style="position:absolute; top:283px; left:493px; width:114px;">
+  <img class="fifteen" src="./assets/4-3.png" alt="15" />
+  <div class="overlaytextfifteen">text15</div>
+</div>
+
+<div class="sixteendiv" style="position:absolute; top:591px; left:485px; width:75px;">
+  <img class="sixteen" src="./assets/4-4.png" alt="16" />
+  <div class="overlaytextsixteen">text16</div>
+</div>
+
+<div class="seventeendiv" style="position:absolute; top:440px; left:520px; width:110px;">
+  <img class="seventeen" src="./assets/4-5.png" alt="17" />
+  <div class="overlaytextseventeen">text17</div>
+</div>
+
+<div class="eighteendiv" style="position:absolute; top:700px; left:500px; width:115px;">
+  <img class="eighteen" src="./assets/4-6.png" alt="18" />
+  <div class="overlaytexteighteen">text18</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const soundMap = {
+    onediv: "1-1",
+    twodiv: "1-2",
+    threediv: "1-3",
+    fourdiv: "1-4",
+    fivediv: "2-1",
+    sixdiv: "2-2",
+    sevendiv: "2-3",
+    eightdiv: "2-4",
+    ninediv: "3-1",
+    tendiv: "3-2",
+    elevendiv: "3-3",
+    twelvediv: "3-4",
+    thirteendiv: "4-1",
+    fourteendiv: "4-2",
+    fifteendiv: "4-3",
+    sixteendiv: "4-4",
+    seventeendiv: "4-5",
+    eighteendiv: "4-6"
+  };
+
+  const extensions = ["mp3", "wav", "flac"];
+  let currentAudio = null;
+  let audioContext = null;
+  let fadeOutTimer = null;
+
+  // AudioContext 초기화 (사용자 상호작용 후)
+  const initAudioContext = () => {
+    if (!audioContext) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioContext.state === 'suspended') {
+      audioContext.resume();
+    }
+  };
+
+  // 페이드아웃 함수
+  const fadeOut = (audio, duration = 2000) => {
+    const originalVolume = audio.volume;
+    const fadeStep = originalVolume / (duration / 50); // 50ms마다 볼륨 조절
+    
+    const fade = () => {
+      if (audio.volume > fadeStep) {
+        audio.volume = Math.max(0, audio.volume - fadeStep);
+        fadeOutTimer = setTimeout(fade, 50);
+      } else {
+        audio.volume = 0;
+        audio.pause();
+        audio.currentTime = 0;
+        audio.volume = originalVolume; // 볼륨 복원
+      }
+    };
+    
+    fade();
+  };
+
+  // 페이드아웃 타이머 클리어 함수
+  const clearFadeOut = () => {
+    if (fadeOutTimer) {
+      clearTimeout(fadeOutTimer);
+      fadeOutTimer = null;
+    }
+  };
+
+  Object.entries(soundMap).forEach(([divClass, baseName]) => {
+    const el = document.querySelector(`.${divClass}`);
+    if (!el) {
+      console.warn(`Element with class ${divClass} not found`);
+      return;
+    }
+
+    el.style.cursor = "pointer";
+
+    el.addEventListener("click", async () => {
+      console.log(`Clicked ${divClass}, trying to play ${baseName}`);
+
+      // AudioContext 초기화
+      initAudioContext();
+
+      // 현재 재생 중인 오디오 정지 및 페이드아웃 취소
+      if (currentAudio) {
+        clearFadeOut();
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+
+      // 오디오 파일 시도
+      let audioLoaded = false;
+      
+      for (let i = 0; i < extensions.length; i++) {
+        if (audioLoaded) break;
+        
+        const src = `sfx/${baseName}.${extensions[i]}`;
+        console.log(`Trying audio source: ${src}`);
+
+        try {
+          const audio = new Audio();
+          
+          // Promise 기반으로 오디오 로딩
+          const loadAudio = new Promise((resolve, reject) => {
+            audio.addEventListener('canplaythrough', resolve, { once: true });
+            audio.addEventListener('error', reject, { once: true });
+            audio.src = src;
+            audio.load();
+          });
+
+          await loadAudio;
+          
+          console.log(`Successfully loaded audio: ${src}`);
+          currentAudio = audio;
+          
+          // 볼륨 설정 (필요에 따라 조정)
+          audio.volume = 0.7;
+          
+          // 재생 시도
+          await audio.play();
+          console.log(`Playing audio: ${src}`);
+          
+          // 음악이 끝나기 1.5초 전에 페이드아웃 시작
+          const fadeStartTime = Math.max(0, audio.duration - 1.5) * 1000; // 밀리초로 변환
+          
+          const checkForFadeOut = () => {
+            if (audio.currentTime >= audio.duration - 1.5 && audio.duration > 1.5) {
+              console.log('Starting fade out...');
+              fadeOut(audio, 1500); // 1.5초 동안 페이드아웃
+            } else if (!audio.paused && !audio.ended) {
+              // 100ms마다 체크
+              setTimeout(checkForFadeOut, 100);
+            }
+          };
+          
+          // 오디오가 로드되면 페이드아웃 체크 시작
+          if (audio.duration && audio.duration > 1.5) {
+            checkForFadeOut();
+          }
+          
+          // 오디오가 자연스럽게 끝났을 때 정리
+          audio.addEventListener('ended', () => {
+            clearFadeOut();
+            currentAudio = null;
+          });
+          
+          audioLoaded = true;
+          
+        } catch (error) {
+          console.warn(`Failed to load/play audio: ${src}`, error);
+          continue;
+        }
+      }
+
+      if (!audioLoaded) {
+        console.error(`No audio file found for ${baseName}`);
+        // 사용자에게 알림 (선택사항)
+        // alert(`오디오 파일을 찾을 수 없습니다: ${baseName}`);
+      }
+    });
+  });
+
+  // 페이지 클릭으로 오디오 컨텍스트 활성화
+  document.addEventListener('click', initAudioContext, { once: true });
+});
+</script>
+
+    <!-- //     <div class="twodiv"><img class="two" src="./assets/1-2.png">
+    //     <div class="overlaytexttwo">111</div>
+    //     </div>
+
+    //     <div class="threediv"><img class="three" src="./assets/1-3.png">
+    //     <div class="overlaytextthree">222</div>
+    //     </div>
+
+    //     <div class="fourdiv"><img class="four" src="./assets/1-4.png">
+    //     <div class="overlaytextfour">333</div>
+    //     </div> 
+
+    //     <div class="fivediv"><img class="five" src="./assets/2-1.png">
+    //     <div class="overlaytextfive">444</div>
+    //     </div>
+
+    //     <div class="sixdiv"><img class="six" src="./assets/2-2.png">
+    //     <div class="overlaytextsix">555</div>
+    //     </div>
+
+    //     <div class="sevendiv"><img class="seven" src="./assets/2-3.png">
+    //     <div class="overlaytextseven">666</div>
+    //     </div>
+
+    //     <div class="eightdiv"><img class="eight" src="./assets/2-4.png">
+    //     <div class="overlaytexteight">777</div>
+    //     </div>
+
+    //     <div class="ninediv"><img class="nine" src="./assets/3-1.png">
+    //     <div class="overlaytextnine">888</div>
+    //     </div>
+
+    //     <div class="tendiv"><img class="ten" src="./assets/3-2.png">
+    //     <div class="overlaytextten">999</div>
+    //     </div>
+
+    //     <div class="elevendiv"><img class="eleven" src="./assets/3-3.png">
+    //     <div class="overlaytexteleven">000</div>
+    //     </div>
+
+    //     <div class="twelvediv"><img class="twelve" src="./assets/3-4.png">
+    //     <div class="overlaytexttwelve">1111</div>
+    //     </div>
+
+    //     <div class="thirteendiv"><img class="thirteen" src="./assets/4-1.png">
+    //     <div class="overlaytextthirteen">2222</div>
+    //     </div>
+
+    //     <div class="fourteendiv"><img class="fourteen" src="./assets/4-2.png">
+    //     <div class="overlaytextfourteen">3333</div>
+    //     </div>
+
+    //     <div class="fifteendiv"><img class="fifteen" src="./assets/4-3.png">
+    //     <div class="overlaytextfifteen">4444</div>
+    //     </div>
+
+    //     <div class="sixteendiv"><img class="sixteen" src="./assets/4-4.png">
+    //     <div class="overlaytextsixteen">5555</div>
+    //     </div>
+
+    //     <div class="seventeendiv"><img class="seventeen" src="./assets/4-5.png">
+    //     <div class="overlaytextseventeen">6666</div>
+    //     </div>
+
+    //     <div class="eighteendiv"><img class="eighteen" src="./assets/4-6.png">
+    //     <div class="overlaytexteighteen">7777</div>
+    //     </div> -->
+
+        <!-- <img class="three" src="./assets/1-3.png">
+    //     <img class="four" src="./assets/1-4.png">
+    //     <img class="five" src="./assets/2-1.png">
+    //     <img class="six" src="./assets/2-2.png">
+    //     <img class="seven" src="./assets/2-3.png">
+    //     <img class="eight" src="./assets/2-4.png">
+    //     <img class="nine" src="./assets/3-1.png">
+    //     <img class="ten" src="./assets/3-2.png">
+    //     <img class="eleven" src="./assets/3-3.png">
+    //     <img class="twelve" src="./assets/3-4.png">
+    //     <img class="thirteen" src="./assets/4-1.png">
+    //     <img class="fourteen" src="./assets/4-2.png">
+    //     <img class="fifteen" src="./assets/4-3.png">
+    //     <img class="sixteen" src="./assets/4-4.png">
+    //     <img class="seventeen" src="./assets/4-5.png">
+    //     <img class="eighteen" src="./assets/4-6.png"> -->
+
+</body>
+</html>
